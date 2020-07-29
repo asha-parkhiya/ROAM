@@ -1,0 +1,138 @@
+# this is an auto generated file. This will be overwritten
+#mutation CreateEvent(
+#  $AuthToken: String!
+#  $payDays: Int
+#  $payRecordAmt: Int
+#  $payRecordNotes: String
+#  $eventType: String!
+#  $payAccountID: Int!
+#) {
+#  createEvent(
+#    AuthToken: $AuthToken
+#    payDays: $payDays
+#    payRecordAmt: $payRecordAmt
+#    payRecordNotes: $payRecordNotes
+#    eventType: $eventType
+#    payAccountID: $payAccountID
+#  ) {
+#    Message
+#  }
+#}
+mutation CreateEventMutation($input: createEventInput) {
+  createEventMutation(input: $input) {
+    Message
+  }
+}
+
+#mutation CreateEvent($name: String!, $when: String!, $where: String!,$description: String!){
+#  createEvent(name : $name,when : $when, where : $where, description : $description){
+#    Message
+#  }
+#}
+#mutation GenerateIssueCode(
+#  $AuthToken: String!
+#  $payAccountID: Int!
+#  $assignmentDays: Int!
+#) {
+#  generateIssueCode(
+#    AuthToken: $AuthToken
+#    payAccountID: $payAccountID
+#    assignmentDays: $assignmentDays
+#  ) {
+#    message
+#    codeArr
+#  }
+#}
+
+
+
+
+
+
+mutation getbatchCodeGeneration($input: getBatchCodeMutationInput!, $requestMeta: requestMetaInput){
+  getBatchCodeMutation(input: $input, requestMeta: $requestMeta){
+    Message
+  }
+}
+#mutation IssueCode(
+#  $AuthToken: String!
+#  $payAccountID: Int!
+#  $assignmentDays: Int!
+#  $payRecordNote: String
+#) {
+#  IssueCode(
+#    AuthToken: $AuthToken
+#    payAccountID: $payAccountID
+#    assignmentDays: $assignmentDays
+#    payRecordNote: $payRecordNote
+#  ) {
+#    message
+#    codeArr
+#  }
+#}
+mutation IssueCodeMutation($input: issueCodeInput!, $requestMeta: requestMetaInput) {
+  IssueCodeMutation(input: $input, requestMeta: $requestMeta) {
+    codeArr {
+      hashTop
+      otpHashFormatted
+    }
+    accountProduct {
+      productItemID
+      productItemOEM_SN
+      productItemPAYG_SN
+      lifeCycleStatus
+    }
+  }
+}
+mutation UpdateEvent(
+  $AuthToken: String!
+  $payDays: Int!
+  $payRecordAmt: Int!
+  $payRecordNotes: String
+  $payEventID: Int!
+) {
+  updateEvent(
+    AuthToken: $AuthToken
+    payDays: $payDays
+    payRecordAmt: $payRecordAmt
+    payRecordNotes: $payRecordNotes
+    payEventID: $payEventID
+  ) {
+    message
+  }
+}
+mutation DeleteEvent($AuthToken: String!, $payEventID: Int!) {
+  deleteEvent(AuthToken: $AuthToken, payEventID: $payEventID) {
+    message
+  }
+}
+mutation GenerateCodeByDaysMutation($input: generateCodeByDaysInput!) {
+  generateCodeByDaysMutation(input: $input) {
+    codeArr {
+      hashTop
+      otpHashFormatted
+    }
+    accountProduct {
+      productItemID
+      productItemOEM_SN
+      productItemPAYG_SN
+      lifeCycleStatus
+    }
+  }
+}
+mutation GenerateCodeByDaysCommitMutation(
+  $input: generateCodeByDaysCommitMutation!
+) {
+  generateCodeByDaysCommitMutation(input: $input) {
+    codeArr {
+      hashTop
+      otpHashFormatted
+    }
+    accountProduct {
+      productItemID
+      productItemOEM_SN
+      productItemPAYG_SN
+      lifeCycleStatus
+    }
+  }
+}

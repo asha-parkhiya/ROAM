@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_newuser"
+            android:icon="@drawable/ic_new_user"
+            android:title="Create New User" />
+
+        <item
+            android:id="@+id/nav_user_list"
+            android:icon="@drawable/person_drawable"
+            android:title="User List" />
+
+        <item
+            android:id="@+id/nav_newpayacc"
+            android:icon="@drawable/ic_add_document"
+            android:title="Create New PayAccount" />
+
+    </group>
+
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_cal"
+                android:icon="@drawable/ic_calendar"
+                android:title="Calender" />
+            <item
+                android:id="@+id/nav_map"
+                android:icon="@drawable/ic_map"
+                android:title="Map" />
+        </menu>
+    </item>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_read"-->
+                <!--android:icon="@drawable/ic_readcard"-->
+                <!--android:title="Read Card" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_write"-->
+                <!--android:icon="@drawable/ic_write_card"-->
+                <!--android:title="Write Card" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_pub_sub"-->
+                <!--android:title="Pub/Sub" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

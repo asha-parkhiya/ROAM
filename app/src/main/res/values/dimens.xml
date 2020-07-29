@@ -1,0 +1,87 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="actionBarSize">56dp</dimen>
+
+    <dimen name="viewpager_margin_overlap">-60dp</dimen>
+    <dimen name="viewpager_margin_overlap_payment">-30dp</dimen>
+
+    <!--genaral spacing-->
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_small">3dp</dimen>
+    <dimen name="spacing_medium">5dp</dimen>
+    <dimen name="spacing_xmedium">7dp</dimen>
+    <dimen name="spacing_middle">10dp</dimen>
+    <dimen name="spacing_large">15dp</dimen>
+    <dimen name="spacing_smlarge">18dp</dimen>
+    <dimen name="spacing_mlarge">20dp</dimen>
+    <dimen name="spacing_mxlarge">25dp</dimen>
+    <dimen name="spacing_xlarge">35dp</dimen>
+    <dimen name="spacing_xmlarge">40dp</dimen>
+    <dimen name="spacing_xxlarge">50dp</dimen>
+    <dimen name="spacing_xxxlarge">55dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+
+
+
+
+    <dimen name="workarea_left_margin">8.0dip</dimen>
+    <dimen name="workarea_right_margin">8.0dip</dimen>
+    <dimen name="workarea_top_margin">8.0dip</dimen>
+    <dimen name="workarea_bottom_margin">4.0dip</dimen>
+    <dimen name="view_horizontal_padding_5">2.0dip</dimen>
+    <dimen name="view_horizontal_padding">4.0dip</dimen>
+    <dimen name="view_horizontal_padding2">8.0dip</dimen>
+    <dimen name="view_horizontal_padding3">12.0dip</dimen>
+    <dimen name="view_horizontal_padding4">16.0dip</dimen>
+    <dimen name="view_vertical_padding_5">2.0dip</dimen>
+    <dimen name="view_vertical_padding">4.0dip</dimen>
+    <dimen name="view_vertical_padding2">8.0dip</dimen>
+    <dimen name="view_vertical_padding3">12.0dip</dimen>
+    <dimen name="view_vertical_padding4">16.0dip</dimen>
+    <dimen name="view_vertical_margin">8.0dip</dimen>
+    <dimen name="group_vertical_margin_5">8.0dip</dimen>
+    <dimen name="group_vertical_margin">16.0dip</dimen>
+    <dimen name="view_titlebar_height">48.0dip</dimen>
+    <dimen name="view_toolbar_height">44.0dip</dimen>
+    <dimen name="view_header_height">42.0dip</dimen>
+    <dimen name="view_header_height_s">36.0dip</dimen>
+    <dimen name="view_listitem_height">40.0dip</dimen>
+    <dimen name="view_listitem_height_2_1">34.0dip</dimen>
+    <dimen name="view_listitem_height_2_2">36.0dip</dimen>
+    <dimen name="view_button_height">40.0dip</dimen>
+    <dimen name="view_titlebar_main_width">44.0dip</dimen>
+    <dimen name="view_titlebar_icon_width">40.0dip</dimen>
+    <dimen name="view_titlebar_back_width">20.0dip</dimen>
+    <dimen name="textsize_normal">16.0sp</dimen>
+    <dimen name="textsize_larger">18.0sp</dimen>
+    <dimen name="textsize_header">18.0sp</dimen>
+    <dimen name="textsize_titlebar">20.0sp</dimen>
+    <dimen name="textsize_smaller">15.0sp</dimen>
+    <dimen name="textsize_smallest">13.0sp</dimen>
+    <dimen name="rect_corner_radius">4.0dip</dimen>
+    <dimen name="pager_view_bar_height">3.0dip</dimen>
+    <dimen name="popup_view_height">248.0dip</dimen>
+    <dimen name="iOS_seperatorSize">1.0px</dimen>
+    <item type="dimen" name="iOS_listLeftPadding">@dimen/view_horizontal_padding4</item>
+    <dimen name="iOS_titlebar_back_width">20.0dip</dimen>
+    <item type="dimen" name="iOS_segment_text_size">@dimen/textsize_smaller</item>
+    <dimen name="iOS_segment_border_width">1.0dip</dimen>
+    <dimen name="iOS_segment_seperator_width">1.0dip</dimen>
+    <item type="dimen" name="iOS_segment_corner_radius">@dimen/rect_corner_radius</item>
+    <dimen name="iOS_itemvalue_segtext_minwidth">90.0dip</dimen>
+    <dimen name="iOS_itemvalue_segment_height">28.0dip</dimen>
+    <dimen name="iOS_itemvalue_stepper_width">90.0dip</dimen>
+    <item type="dimen" name="bottom_tool_zone_height">@dimen/popup_view_height</item>
+    <dimen name="bottom_tool_action_height">56.0dip</dimen>
+    <item type="dimen" name="bottom_tool_margin_top">@dimen/view_vertical_padding2</item>
+    <item type="dimen" name="bottom_tool_margin_middle">@dimen/view_vertical_padding3</item>
+    <item type="dimen" name="bottom_tool_margin_bottom">@dimen/view_vertical_padding2</item>
+</resources>

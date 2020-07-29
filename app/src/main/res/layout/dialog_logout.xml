@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="25dp"
+    android:background="@drawable/bg_white_border_black"
+    android:minWidth="340dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:fontFamily="@font/lato_light"
+        android:layout_gravity="start"
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Are you sure want to Logout ?"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+    <LinearLayout
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:fontFamily="@font/lato_light"
+            android:textStyle="bold"
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_white_border_black"
+            android:theme="@style/Button.New" />
+
+        <Button
+            android:fontFamily="@font/lato_light"
+            android:textStyle="bold"
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_white_border_black"
+            android:text="CANCEL"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</LinearLayout>

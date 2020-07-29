@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_titlebar"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/main_title_ios"/>
+
+    <LinearLayout
+        style="@style/IOSWorkAreaRoot"
+        android:background="@drawable/theme_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/main_container_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="100.0"
+            android:visibility="visible"
+            android:gravity="center">
+        <FrameLayout
+            android:id="@+id/main_container_label_viewer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.wisdom.tian.view.customView.DragView
+                android:id="@+id/main_label_viewer"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/shape_edit_white_normal"/>
+            <RelativeLayout
+                android:id="@+id/main_drag_rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="17dp"
+                android:background="@drawable/shape_edit_opt_normal">
+            </RelativeLayout>
+        </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/main_container_main_alert"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="100.0"
+            android:clickable="true"
+            android:visibility="visible">
+
+            <ImageView
+                style="@style/DzImageView"
+                android:layout_width="160.0dip"
+                android:layout_gravity="center"
+                android:contentDescription="@string/str_empty"
+                android:duplicateParentState="true"
+                android:src="@drawable/main_func_print" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/main_container_fragment"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bottom_tool_zone_height"
+            android:background="@color/background_dark"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/transparent"
+                android:dividerPadding="1.0dip"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/view_titlebar_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_printlabel_name"
+                        style="@style/DzMarqueeView"
+                        android:layout_width="0.0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="@dimen/view_horizontal_padding"
+                        android:layout_marginRight="@dimen/view_horizontal_padding"
+                        android:layout_weight="50.0"
+                        android:gravity="center"
+                        android:text="@string/msg_btunconnect_str"
+                        android:textColor="@color/foreground_on_dark" />
+
+                    <ImageView
+                        style="@style/DzVerticalDivider"
+                        android:layout_width="1.0dip"
+                        android:contentDescription="@string/str_empty" />
+
+                    <LinearLayout
+                        android:id="@+id/vg_printer_name"
+                        android:layout_width="0.0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="50.0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_printer_state"
+                            style="@style/DzImageView"
+                            android:contentDescription="@string/str_empty"
+                            android:duplicateParentState="true"
+                            android:layout_marginLeft="15dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_printer_name"
+                            style="@style/DzMarqueeView"
+                            android:layout_marginRight="@dimen/view_horizontal_padding"
+                            android:duplicateParentState="true"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:text="@string/str_connecting"
+                            android:textColor="@color/foreground_on_dark" />
+                    </LinearLayout>
+                </TableRow>
+
+                <ImageView
+                    style="@style/DzHorizontalDivider"
+                    android:layout_height="1.0dip"
+                    android:contentDescription="@string/str_empty" />
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/main_func_newlabel"
+                        style="@style/CompButtonContainer1">
+
+                        <ImageView
+                            style="@style/DzImageView"
+                            android:contentDescription="@string/main_func_newlabel"
+                            android:duplicateParentState="true"
+                            android:src="@drawable/main_func_newlabel" />
+
+                        <TextView
+                            style="@style/DzTextViewLight"
+                            android:layout_marginTop="@dimen/view_vertical_margin"
+                            android:duplicateParentState="true"
+                            android:text="@string/str_new" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/main_func_print"
+                        android:onClick="showPrint"
+                        style="@style/CompButtonContainer1">
+
+                        <ImageView
+                            style="@style/DzImageView"
+                            android:contentDescription="@string/main_func_print"
+                            android:duplicateParentState="true"
+                            android:src="@drawable/main_func_print" />
+
+                        <TextView
+                            style="@style/DzTextViewLight"
+                            android:layout_marginTop="@dimen/view_vertical_margin"
+                            android:duplicateParentState="true"
+                            android:text="@string/main_func_print" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/main_func_labels"
+                        android:visibility="gone"
+                        style="@style/CompButtonContainer1">
+
+                        <ImageView
+                            style="@style/DzImageView"
+                            android:contentDescription="@string/main_func_labels"
+                            android:duplicateParentState="true"
+                            android:src="@drawable/main_func_labels" />
+
+                        <TextView
+                            style="@style/DzTextViewLight"
+                            android:layout_marginTop="@dimen/view_vertical_margin"
+                            android:duplicateParentState="true"
+                            android:text="@string/main_func_labels" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

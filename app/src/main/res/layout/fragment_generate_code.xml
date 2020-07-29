@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_header"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?android:attr/actionBarSize"-->
+<!--        android:background="@color/colorPrimary">-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/btn_back"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:padding="3dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@drawable/ic_left_arrow_white" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_toEndOf="@+id/btn_back"-->
+<!--            android:text="IssueCode"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="18sp" />-->
+
+
+<!--    </RelativeLayout>-->
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/bt_close"-->
+<!--                android:layout_width="?attr/actionBarSize"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:tint="@android:color/white"-->
+<!--                app:srcCompat="@drawable/ic_close" />-->
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/name_toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Issue Code"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        </LinearLayout>
+
+        <EditText
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_gray"
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@+id/btn_generatecode"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/lato_light"
+            android:inputType="number"
+            android:maxLines="1"
+            android:hint="Assignment days"
+            android:maxLength="4"
+            android:textSize="18sp"
+            android:backgroundTint="@color/dim_gray"/>
+
+
+        <Button
+            android:id="@+id/btn_generatecode"
+            android:layout_width="150dp"
+            android:layout_height="55sp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:theme="@style/Button.Accent"
+            android:text="Generate Code"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_marginStart="03dp"
+            android:id="@+id/tv_showcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_code"
+            android:fontFamily="@font/lato_light"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:text="Issue Code"
+            android:textSize="18sp" />
+
+        <EditText
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/lato_light"
+            android:id="@+id/et_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_showcode"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Please Enter the note"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_note"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_issuecode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_back_disable"
+                android:text="Issue code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/Button.Accent"
+                android:textSize="18sp" />
+
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/textViewToDos"/>-->
+<!--            <ListView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/list_view"-->
+<!--                android:layout_marginTop="10sp" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_readcode"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/btn_issuecode"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#17a2b8"-->
+                <!--android:text="Read code"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18sp" />-->
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+            <!--android:fontFamily="@font/lato_light"-->
+            <!--android:id="@+id/textViewTitle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:text="Serial Port"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+        <!--<TextView-->
+            <!--android:fontFamily="@font/lato_light"-->
+            <!--android:id="@+id/textView1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="150dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="34dp"-->
+            <!--android:background="#FFFFFF"-->
+            <!--android:gravity="bottom"-->
+            <!--android:scrollbars="vertical" />-->
+
+    <!--</RelativeLayout>-->
+</LinearLayout>

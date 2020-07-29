@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity.HomeActivity"
+    tools:showIn="@layout/app_bar_home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/bg_searchbar">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_menu"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:src="@drawable/ic_menu"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:background="@color/white"/>-->
+
+<!--                <EditText-->
+<!--                    android:fontFamily="@font/lato_light"-->
+<!--                    android:id="@+id/editText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:background="@android:color/white"-->
+<!--                    android:hint="Search..."-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:minWidth="100dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/iv_menu"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginLeft="16dp" />-->
+
+<!--                <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                    android:id="@+id/profile_image"-->
+<!--                    android:layout_width="55dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/profile"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    app:civ_border_width="2dp"-->
+<!--                    app:civ_border_color="#FF000000"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginRight="8dp"-->
+<!--                    android:background="@color/white"/>-->
+<!--            </RelativeLayout>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                app:cardUseCompatPadding="true"-->
+<!--                android:layout_margin="8dp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                android:elevation="1dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="64dp"-->
+<!--                app:cardBackgroundColor="@color/white"-->
+<!--                android:background="@color/white">-->
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@color/white">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_menu"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:src="@drawable/ic_menu"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:background="@color/white"/>-->
+
+<!--                    <EditText-->
+<!--                        android:fontFamily="@font/lato_light"-->
+<!--                        android:id="@+id/editText"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="16dp"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        android:background="@android:color/white"-->
+<!--                        android:hint="Search..."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:minWidth="100dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/iv_menu"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:layout_marginLeft="16dp" />-->
+
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/profile_image"-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/profile"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        app:civ_border_width="2dp"-->
+<!--                        app:civ_border_color="#FF000000"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:background="@color/white"/>-->
+
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+        </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/flContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

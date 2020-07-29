@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/bottom_tool_margin_bottom"
+        android:paddingTop="@dimen/bottom_tool_margin_top">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bottom_tool_action_height"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/tool_action_barcode"
+                style="@style/EditorToolActionContainer"
+                android:onClick="onInsertToolClick"
+                android:tag="Barcode">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_barcode"
+                    android:src="@drawable/toolact_barcode" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_barcode" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tool_action_text"
+                style="@style/EditorToolActionContainer"
+                android:tag="Text">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_text"
+                    android:src="@drawable/toolact_text" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_text" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/tool_action_qrcode"
+                style="@style/EditorToolActionContainer"
+                android:tag="Qrcode">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_qrcode"
+                    android:src="@drawable/toolact_qrcode" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_qrcode" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tool_action_cpcl"
+                style="@style/EditorToolActionContainer">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="CPCL"
+                    android:src="@drawable/toolact_logo" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="CPCL" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bottom_tool_action_height"
+            android:layout_marginTop="@dimen/bottom_tool_margin_middle"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/tool_action_image"
+                style="@style/EditorToolActionContainer">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_image"
+                    android:src="@drawable/toolact_image" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_image" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tool_action_tspl"
+                style="@style/EditorToolActionContainer"
+                android:onClick="onInsertToolClick"
+                android:tag="Time">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="TSPL"
+                    android:src="@drawable/toolact_date" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="TSPL" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/tool_action_rectangle"
+                style="@style/EditorToolActionContainer"
+                android:visibility="gone"
+                android:tag="Rectangle">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_rectangle"
+                    android:src="@drawable/toolact_rectangle" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_rectangle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tool_action_line"
+                style="@style/EditorToolActionContainer"
+                android:visibility="gone"
+                android:tag="Line">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_line"
+                    android:src="@drawable/toolact_line" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_line" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bottom_tool_action_height"
+            android:layout_marginTop="@dimen/bottom_tool_margin_middle"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/tool_action_table"
+                style="@style/EditorToolActionContainer">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_table"
+                    android:src="@drawable/toolact_table" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_table" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/EditorToolActionContainer"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_new"
+                    android:src="@drawable/toolact_new" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_new" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/EditorToolActionContainer"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_new"
+                    android:src="@drawable/toolact_new" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_new" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/EditorToolActionContainer"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/EditorToolActionImage"
+                    android:contentDescription="@string/tool_action_new"
+                    android:src="@drawable/toolact_new" />
+
+                <TextView
+                    style="@style/EditorToolActionText"
+                    android:text="@string/tool_action_new" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

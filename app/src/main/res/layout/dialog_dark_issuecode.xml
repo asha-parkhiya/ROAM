@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_border_black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/bt_close"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/grey_20"
+            app:srcCompat="@drawable/ic_close" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        </LinearLayout>
+
+        <EditText
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_gray"
+            android:id="@+id/et_code"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/btn_generatecode"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_margin="2dp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/lato_light"
+            android:inputType="number"
+            android:maxLines="1"
+            android:hint="Assignment days"
+            android:maxLength="4"
+            android:textSize="14sp"
+            android:backgroundTint="@color/dim_gray"/>
+
+
+        <Button
+            android:textStyle="bold"
+            android:fontFamily="@font/lato_light"
+            android:id="@+id/btn_generatecode"
+            android:layout_width="115sp"
+            android:layout_height="45sp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="2dp"
+            android:background="@drawable/bg_white_border_black"
+            android:text="Generate Code"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:layout_marginStart="03dp"
+            android:id="@+id/tv_showcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_code"
+            android:fontFamily="@font/lato_light"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:text="Issue Code" />
+
+        <EditText
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/lato_light"
+            android:id="@+id/et_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_showcode"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Please Enter the note"
+            android:maxLines="1"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_note"
+            android:orientation="vertical">
+
+            <Button
+                android:textStyle="bold"
+                android:fontFamily="@font/lato_light"
+                android:id="@+id/btn_issuecode"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_white_border_black"
+                android:text="Issue code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/Button.Accent" />
+            <Button
+                android:textStyle="bold"
+                android:fontFamily="@font/lato_light"
+                android:id="@+id/btn_print_aactivationcode"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_white_border_black"
+                android:text="Print Activation Code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/Button.Accent" />
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@color/black"
+        android:layout_below="@+id/rl_main"
+        android:id="@+id/main_container_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="100.0"
+        android:visibility="gone"
+        android:gravity="center">
+<!--        <FrameLayout-->
+<!--            android:id="@+id/main_container_label_viewer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+            <com.sparkle.roam.Print.view.customView.DragView
+                android:id="@+id/main_label_viewer"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/bg_white_border_black">
+
+                <RelativeLayout
+                    android:id="@+id/rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:padding="2sp"
+                        android:layout_margin="8sp"
+                        android:background="@color/white"
+                        android:id="@+id/text5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User : "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/lato_light"/>
+
+                    <TextView
+                        android:padding="2sp"
+                        android:layout_margin="8sp"
+                        android:background="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/text5"
+                        android:id="@+id/text6"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+
+                    <TextView
+                        android:padding="2sp"
+                        android:layout_below="@+id/text5"
+                        android:layout_margin="8sp"
+                        android:background="@color/white"
+                        android:id="@+id/text7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date : "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/lato_light"/>
+
+                    <TextView
+                        android:padding="2sp"
+                        android:layout_below="@+id/text5"
+                        android:layout_margin="8sp"
+                        android:background="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/text7"
+                        android:id="@+id/text8"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                <TextView
+                    android:padding="2sp"
+                    android:layout_below="@+id/text7"
+                    android:layout_margin="8sp"
+                    android:background="@color/white"
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Code : "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_light"/>
+
+                <TextView
+                    android:padding="2sp"
+                    android:layout_below="@+id/text7"
+                    android:layout_margin="8sp"
+                    android:background="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text"
+                    android:id="@+id/text2"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:padding="2sp"
+                    android:layout_margin="8sp"
+                    android:layout_below="@+id/text"
+                    android:background="@color/white"
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Day : "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_light"/>
+
+                <TextView
+                    android:padding="2sp"
+                    android:layout_below="@+id/text"
+                    android:layout_margin="8sp"
+                    android:background="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text3"
+                    android:id="@+id/text4"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </com.sparkle.roam.Print.view.customView.DragView>
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/main_drag_rl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="17dp"-->
+<!--                android:background="@drawable/bg_white_border_black">-->
+<!--            </RelativeLayout>-->
+<!--        </FrameLayout>-->
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.HomeActivity"
+    android:background="@color/black">
+
+    <!--<androidx.cardview.widget.CardView-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="64dp"-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:elevation="1dp"-->
+        <!--app:cardCornerRadius="8dp"-->
+        <!--app:cardUseCompatPadding="true">-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_menu"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:src="@drawable/ic_menu"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/et_serch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:hint="Search..."-->
+                <!--android:minWidth="100dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/iv_menu"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                <!--android:id="@+id/profile_image"-->
+                <!--android:layout_width="55dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:padding="5dp"-->
+                <!--android:src="@drawable/profile"-->
+                <!--app:civ_border_color="#FF000000"-->
+                <!--app:civ_border_width="2dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--</androidx.cardview.widget.CardView>-->
+
+    <FrameLayout
+        android:id="@+id/flContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/btn_add"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@drawable/ic_plus" />-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_large"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="PRIMARY"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        app:rippleColor="@color/grey_5"
+        app:srcCompat="@drawable/ic_add" />
+
+</RelativeLayout>

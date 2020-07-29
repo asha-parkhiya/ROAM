@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="25dp"
+    android:background="@drawable/bg_white_border_black"
+    android:minWidth="340dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/lato_light"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:text="You do not have enough credit.\nYou remaining credit on this account is 0 days"/>
+
+        <Button
+            android:fontFamily="@font/lato_light"
+            android:id="@+id/btn_ok"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="45sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:theme="@style/Button.New"
+            android:textStyle="bold"
+            android:background="@drawable/bg_white_border_black"
+            android:textColor="@color/white"
+            android:text="OK"
+            android:textAllCaps="false"/>
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "507938220262",
+    "firebase_url": "https://roam-3a3db.firebaseio.com",
+    "project_id": "roam-3a3db",
+    "storage_bucket": "roam-3a3db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507938220262:android:2ba8a1d18865603edbb327",
+        "android_client_info": {
+          "package_name": "com.sparkle.roam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507938220262-9hmajfjv8bjonkoaiq82938r5992u8h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYVCKboxPTyPLZR55k9eWx14lKuqEqVh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507938220262-9hmajfjv8bjonkoaiq82938r5992u8h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

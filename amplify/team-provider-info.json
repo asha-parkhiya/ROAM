@@ -1,0 +1,14 @@
+{
+    "default": {
+        "awscloudformation": {
+            "AuthRoleName": "newroam-default-20190726171723-authRole",
+            "UnauthRoleArn": "arn:aws:iam::214188808861:role/newroam-default-20190726171723-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::214188808861:role/newroam-default-20190726171723-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "newroam-default-20190726171723-deployment",
+            "UnauthRoleName": "newroam-default-20190726171723-unauthRole",
+            "StackName": "newroam-default-20190726171723",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:214188808861:stack/newroam-default-20190726171723/22f19480-af9b-11e9-af4a-06f5e6b3956a"
+        }
+    }
+}

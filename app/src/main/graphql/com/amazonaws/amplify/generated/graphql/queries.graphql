@@ -1,0 +1,437 @@
+# this is an auto generated file. This will be overwritten
+query GetMessage {
+    getMessage {
+        Message
+    }
+}
+query GetPayAccount($payAccountID: Int!, $agentID: Int!, $AuthToken: String!) {
+    getPayAccount(
+        payAccountID: $payAccountID
+        agentID: $agentID
+        AuthToken: $AuthToken
+    ) {
+        payAccountID
+        startDate
+        depositDays
+        payoffAmt
+        minPayDays
+        maxPayDays
+        schPayDays
+        agentId
+        agentAssignmentStatus
+        agentAssignment
+        initialCreditDays
+        receivedPayAmt
+        assignedToAgent {
+            agentID
+            lastName
+            firstName
+            agentAuthLevel
+            phoneNumber
+            email
+            dealerAffliation
+            hireDate
+            fireDate
+            assignmentStartDate
+            assignmentEndDate
+            assignmentStatus
+        }
+        accountUser {
+            userID
+            userCode
+            agentID
+            lastName
+            firstName
+            phoneNumber
+            email
+            locationGps
+            address1
+            address2
+            city
+            state
+            country
+            postCode
+        }
+        accountProduct {
+            assignedItemsID
+            itemAssignDate
+            itemAssignNote
+            valuePerDay
+            valueDays
+            longevityDays
+            activateDate
+            deployNotes
+        }
+        payEvents {
+            payEventID
+            payEventDate
+            payDays
+            payRecordAmt
+            payRecordNotes
+        }
+    }
+}
+
+#query getProductItemlist{
+#    getProductItemListQuery{
+#        productItemID
+#        productItemOEM_SN
+#        productItemPAYG_SN
+#    }
+#}
+
+query getuserList($input: userListInput!){
+    getUserListQuery(input: $input){
+        userID
+        userCode
+        lastName
+        firstName
+    }
+}
+
+query getUserPayaccountList($input: userPayAccountListInput!){
+    getUserPayAccountListQuery(input: $input){
+        payAccountID
+        startDate
+        depositDays
+        payoffAmt
+        minPayDays
+        maxPayDays
+        schPayDays
+        agentId
+        agentAssignmentStatus
+        agentAssignment
+        initialCreditDays
+        receivedPayAmt
+        assignedToAgent {
+            agentID
+            lastName
+            firstName
+            agentAuthLevel
+            phoneNumber
+            email
+            dealerAffliation
+            hireDate
+            fireDate
+            assignmentStartDate
+            assignmentEndDate
+            assignmentStatus
+        }
+        accountUser {
+            userID
+            userCode
+            agentID
+            lastName
+            firstName
+            phoneNumber
+            email
+            locationGps
+            address1
+            address2
+            city
+            state
+            country
+            postCode
+        }
+        accountProduct {
+            assignedItemsID
+            itemAssignDate
+            itemAssignNote
+            valuePerDay
+            valueDays
+            longevityDays
+            activateDate
+            deployNotes
+            linkedTo{  productItemID  productItemOEM_SN  productItemPAYG_SN firmwareVersion}
+        }
+        payEvents {
+            payEventID
+            payEventDate
+            payDays
+            payRecordAmt
+            payRecordNotes
+        }
+    }
+}
+
+#query GetPayAccounttest(
+#    $payAccountID: Int
+#    $agentID: Int
+#    $offset: Int!
+#    $limit: Int!
+#    $searchkey: String
+#    $authToken: String!
+#) {
+#    getPayAccounttest(
+#        payAccountID: $payAccountID
+#        agentID: $agentID
+#        offset: $offset
+#        limit: $limit
+#        searchkey: $searchkey
+#        authToken: $authToken
+#    ) {
+#        payAccountID
+#        startDate
+#        depositDays
+#        payoffAmt
+#        minPayDays
+#        maxPayDays
+#        schPayDays
+#        agentId
+#        agentAssignmentStatus
+#        agentAssignment
+#        initialCreditDays
+#        receivedPayAmt
+#        assignedToAgent {
+#            agentID
+#            lastName
+#            firstName
+#            agentAuthLevel
+#            phoneNumber
+#            email
+#            dealerAffliation
+#            hireDate
+#            fireDate
+#            assignmentStartDate
+#            assignmentEndDate
+#            assignmentStatus
+#        }
+#        accountUser {
+#            userID
+#            userCode
+#            agentID
+#            lastName
+#            firstName
+#            phoneNumber
+#            email
+#            locationGps
+#            address1
+#            address2
+#            city
+#            state
+#            country
+#            postCode
+#        }
+#        accountProduct {
+#            assignedItemsID
+#            itemAssignDate
+#            itemAssignNote
+#            valuePerDay
+#            valueDays
+#            longevityDays
+#            activateDate
+#            deployNotes
+#        }
+#        payEvents {
+#            payEventID
+#            payEventDate
+#            payDays
+#            payRecordAmt
+#            payRecordNotes
+#        }
+#    }
+#}
+
+#query GetPayAccountList(
+#    $agentID: Int
+#    $offset: Int!
+#    $limit: Int!
+#    $AuthToken: String!
+#    $searchkey: String
+#) {
+#    getPayAccountList(
+#        agentID: $agentID
+#        offset: $offset
+#        limit: $limit
+#        AuthToken: $AuthToken
+#        searchkey: $searchkey
+#    ) {
+#        payAccountID
+#        startDate
+#        depositDays
+#        payoffAmt
+#        minPayDays
+#        maxPayDays
+#        schPayDays
+#        agentId
+#        agentAssignmentStatus
+#        agentAssignment
+#        initialCreditDays
+#        receivedPayAmt
+#        assignedToAgent {
+#            agentID
+#            lastName
+#            firstName
+#            agentAuthLevel
+#            phoneNumber
+#            email
+#            dealerAffliation
+#            hireDate
+#            fireDate
+#            assignmentStartDate
+#            assignmentEndDate
+#            assignmentStatus
+#        }
+#        accountUser {
+#            userID
+#            userCode
+#            agentID
+#            lastName
+#            firstName
+#            phoneNumber
+#            email
+#            locationGps
+#            address1
+#            address2
+#            city
+#            state
+#            country
+#            postCode
+#        }
+#        accountProduct {
+#            assignedItemsID
+#            itemAssignDate
+#            itemAssignNote
+#            valuePerDay
+#            valueDays
+#            longevityDays
+#            activateDate
+#            deployNotes
+#        }
+#        payEvents {
+#            payEventID
+#            payEventDate
+#            payDays
+#            payRecordAmt
+#            payRecordNotes
+#        }
+#    }
+#}
+
+query GetPayAccountListQuery($input: payAccountListInput) {
+    getPayAccountListQuery(input: $input) {
+        total
+        data{
+        payAccountID
+        startDate
+        depositDays
+        payoffAmt
+        minPayDays
+        maxPayDays
+        schPayDays
+        agentId
+        agentAssignmentStatus
+        agentAssignment
+        initialCreditDays
+        receivedPayAmt
+        assignedToAgent {
+            agentID
+            lastName
+            firstName
+            agentAuthLevel
+            phoneNumber
+            email
+            dealerAffliation
+            hireDate
+            fireDate
+            assignmentStartDate
+            assignmentEndDate
+            assignmentStatus
+        }
+        accountUser {
+            userID
+            userCode
+            agentID
+            lastName
+            firstName
+            phoneNumber
+            email
+            locationGps
+            address1
+            address2
+            city
+            state
+            country
+            postCode
+        }
+        accountProduct {
+            assignedItemsID
+            itemAssignDate
+            itemAssignNote
+            valuePerDay
+            valueDays
+            longevityDays
+            activateDate
+            deployNotes
+            linkedTo{  productItemID  productItemOEM_SN  productItemPAYG_SN firmwareVersion }
+        }
+        payEvents {
+            payEventID
+            payEventDate
+            payDays
+            payRecordAmt
+            payRecordNotes
+        }
+    }
+}
+}
+#query GetpayEventList(
+#    $AuthToken: String!
+#    $payAccountID: Int!
+#    $offset: Int!
+#    $limit: Int!
+#    $searchkey: String
+#) {
+#    getpayEventList(
+#        AuthToken: $AuthToken
+#        payAccountID: $payAccountID
+#        offset: $offset
+#        limit: $limit
+#        searchkey: $searchkey
+#    ) {
+#        payEventID
+#        payEventDate
+#        payDays
+#        payRecordAmt
+#        payRecordNotes
+#        eventType
+#        codeDays
+#        codeIssued
+#        codehashTop
+#        linkedTo {
+#            payAccountID
+#            startDate
+#            depositDays
+#            payoffAmt
+#            minPayDays
+#            maxPayDays
+#            schPayDays
+#            agentId
+#            agentAssignmentStatus
+#            agentAssignment
+#            initialCreditDays
+#            receivedPayAmt
+#        }
+#    }
+#}
+query GetpayEventListQuery($input: payEventListInput) {
+    getpayEventListQuery(input: $input) {
+        payEventID
+        payEventDate
+        payDays
+        payRecordAmt
+        payRecordNotes
+        eventType
+        codeDays
+        codeIssued
+        codehashTop
+    }
+}
+#query GetProductAccountListQuery($input: productAccountInput) {
+#    getProductAccountListQuery(input: $input) {
+#
+#
+#        payAccountID startDate depositDays payoffAmt minPayDays maxPayDays schPayDays agentAssignmentStatus agentAssignment
+#
+#    }
+#}
