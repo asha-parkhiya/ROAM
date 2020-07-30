@@ -41,32 +41,30 @@
 
         </LinearLayout>
 
-        <EditText
-            android:textColor="@color/white"
-            android:textColorHint="@color/light_gray"
-            android:id="@+id/et_code"
-            android:layout_width="wrap_content"
-            android:layout_toLeftOf="@+id/btn_generatecode"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_margin="2dp"
-            android:gravity="center_vertical"
-            android:fontFamily="@font/lato_light"
-            android:inputType="number"
-            android:maxLines="1"
-            android:hint="Assignment days"
-            android:maxLength="4"
-            android:textSize="14sp"
-            android:backgroundTint="@color/dim_gray"/>
+<!--        <EditText-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/light_gray"-->
+<!--            android:id="@+id/et_code"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_toLeftOf="@+id/btn_generatecode"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_margin="2dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:fontFamily="@font/lato_light"-->
+<!--            android:inputType="number"-->
+<!--            android:maxLines="1"-->
+<!--            android:hint="Assignment days"-->
+<!--            android:maxLength="4"-->
+<!--            android:textSize="14sp"-->
+<!--            android:backgroundTint="@color/dim_gray"/>-->
 
 
         <EditText
-            android:layout_below="@+id/et_code"
             android:textColor="@color/white"
             android:textColorHint="@color/light_gray"
             android:id="@+id/et_amount"
             android:layout_width="wrap_content"
-            android:layout_toLeftOf="@+id/btn_generatecode"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_margin="2dp"
@@ -91,7 +89,7 @@
             android:fontFamily="@font/lato_light"
             android:inputType="text"
             android:maxLines="1"
-            android:hint="Please Enter the note"
+            android:hint="Please Enter note"
             android:textSize="14sp"
             android:backgroundTint="@color/dim_gray"/>
 

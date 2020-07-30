@@ -79,7 +79,7 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
     private String PPID = "";
     private String firmwareVersion = "";
     private String agentassignment = "";
-    private EditText et_code, et_amount,et_note;
+    private EditText et_amount,et_note;
 
     private ArrayList<String> codelist;
     private ArrayList<String> codehashtoplist;
@@ -204,7 +204,6 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        et_code = dialog.findViewById(R.id.et_code);
         et_amount = dialog.findViewById(R.id.et_amount);
         et_note = dialog.findViewById(R.id.et_note);
 
@@ -233,16 +232,12 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
                 InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(btn_addpayment.getWindowToken(), 0);
 
-                if (et_code.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please Enter the day", Toast.LENGTH_SHORT).show();
-                }else if(et_amount.getText().toString().equals("")){
+                if(et_amount.getText().toString().equals("")){
                     Toast.makeText(getContext(), "Please Enter the Amount", Toast.LENGTH_SHORT).show();
                 }else {
                     Offline(payAccID,et_amount.getText().toString(),notes);
                     CreateEventMutationquery();
                     Toast.makeText(getContext(), "Payment successfully.", Toast.LENGTH_SHORT).show();
-                    et_code.setText("");
-                    et_code.setHint("Assignment days");
                     et_amount.setText("");
                     et_amount.setHint("Please Enter Amount");
                     et_note.setText("");
@@ -305,7 +300,7 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
         int str = 0;
         Cursor cursor = mdbhelper.getLastEventData();
         if(cursor.moveToLast()){
-            str  = Integer.parseInt(cursor.getString( cursor.getColumnIndex("payEventID") ));
+            str  = Integer.parseInt(cursor.getString(cursor.getColumnIndex("payEventID")));
             str = str + 1;
         }
 //        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -319,13 +314,12 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
     }
 
     public void CreateEventMutationquery() {
-        int day = Integer.parseInt(et_code.getText().toString());
         int amount = Integer.parseInt(et_amount.getText().toString());
         notes = et_note.getText().toString();
         if (notes.equals("")){
             notes = "paymentMutation";
         }
-        CreateEventInput createEventInput = CreateEventInput.builder().eventType("payCollect").agentID(agentID).payAccountID(payAccID).payDays(day).payRecordAmt(amount).payRecordNotes(notes).build();
+        CreateEventInput createEventInput = CreateEventInput.builder().eventType("payCollect").agentID(agentID).payAccountID(payAccID).payDays(0).payRecordAmt(amount).payRecordNotes(notes).build();
         final CreateEventMutation issueCodeMutation = CreateEventMutation.builder().input(createEventInput).build();
         aPPClientService.AWSAppSyncClient().mutate(issueCodeMutation).enqueue(new GraphQLCall.Callback<CreateEventMutation.Data>() {
             @Override
