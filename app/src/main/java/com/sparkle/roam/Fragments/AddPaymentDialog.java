@@ -8,7 +8,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -19,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +49,7 @@ import com.sparkle.roam.WebServices.WebRequest;
 import com.sparkle.roam.WebServices.WebResponseListener;
 import com.sparkle.roam.services.APPClientService;
 import com.sparkle.roam.services.MqttService;
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -52,6 +58,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,6 +69,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import type.CreateEventInput;
 
 import static com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread;
@@ -112,6 +123,14 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
     RelativeLayout rl;
     String firstName;
     private DatabaseHelper mdbhelper;
+
+    String flag;
+    String currencySymbol;
+    String currencyFXCode;
+    String countrySymbol;
+
+    CircleImageView imageView;
+    TextView currency;
 
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -210,11 +229,14 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
         btn_addpayment = dialog.findViewById(R.id.btn_addpayment);
         bt_close = dialog.findViewById(R.id.bt_close);
 
+        mdbhelper = new DatabaseHelper(getContext());
+
+        imageView = dialog.findViewById(R.id.imageView);
+        currency = dialog.findViewById(R.id.currencySymbol);
         init();
         String locale = getContext().getResources().getConfiguration().locale.getCountry();
         System.out.println("------------------"+locale);
 
-        mdbhelper = new DatabaseHelper(getContext());
         return dialog;
     }
 
@@ -235,6 +257,7 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
                 if(et_amount.getText().toString().equals("")){
                     Toast.makeText(getContext(), "Please Enter the Amount", Toast.LENGTH_SHORT).show();
                 }else {
+                    notes = et_note.getText().toString();
                     Offline(payAccID,et_amount.getText().toString(),notes);
                     CreateEventMutationquery();
                     Toast.makeText(getContext(), "Payment successfully.", Toast.LENGTH_SHORT).show();
@@ -258,39 +281,24 @@ public class AddPaymentDialog extends DialogFragment implements View.OnClickList
 
         agentID = myPref.getPref(Constants.AGENTID,0);
 
-        codelist = new ArrayList<>();
-        codehashtoplist = new ArrayList<>();
-
-        try {
-            JSONObject jsonObject = new JSONObject(agentassignment);
-            JSONArray jsonArray = jsonObject.getJSONArray("assignedCodes");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                codehashtoplist.add(jsonArray.getJSONObject(i).getString("hashTop"));
-                codelist.add(jsonArray.getJSONObject(i).getString("otpHashFormatted"));
-            }
-
-            System.out.println("-----------------------codelist size---  "+codelist.size());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        Cursor res = mdbhelper.getDistributorData();
+        while (res.moveToNext()){
+            flag = res.getString(res.getColumnIndex("flagImage"));
+            currencySymbol = res.getString(res.getColumnIndex("currencySymbol"));
+            currencyFXCode = res.getString(res.getColumnIndex("currencyFXCode"));
+            countrySymbol = res.getString(res.getColumnIndex("countrySymbol"));
+            System.out.println("-----------------------"+flag);
+            System.out.println("-----------------------"+currencySymbol);
+            System.out.println("-----------------------"+currencyFXCode);
+            System.out.println("-----------------------"+countrySymbol);
+            currency.setText(currencySymbol);
         }
 
-        if (firmwareVersion != null){
-            try {
-                JSONObject obj = new JSONObject(firmwareVersion);
-                String device_type = obj.getString("firmware");
 
-                System.out.println("--------firmwareVersion---------"+firmwareVersion);
-                System.out.println("--------device_type---------"+device_type);
-                if (device_type.startsWith("ovCamp")){
-                    myPref.setPref(Constants.DEVICE_TYPE,Constants.OVCAMP_DEVICE);
-                }else {
-                    myPref.setPref(Constants.DEVICE_TYPE,Constants.LUMN_DEVICE);
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        try {
+            Picasso.get().load(flag).into(imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

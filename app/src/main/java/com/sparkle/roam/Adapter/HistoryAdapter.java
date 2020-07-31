@@ -1,5 +1,6 @@
 package com.sparkle.roam.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sparkle.roam.Model.PayEventSync.PayEventData;
 import com.sparkle.roam.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
@@ -38,15 +42,27 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PayEventData getpayEventListQuery1 = getpayEventListQueryLists.get(position);
+        String date = getpayEventListQuery1.getPayEventDate();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat spf=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        Date newDate= null;
+        try {
+            newDate = spf.parse(date);
+            spf= new SimpleDateFormat("MM/dd/yyyy HH:mm");
+            date = spf.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if (getpayEventListQuery1.getEventType().equals("payCollect")){
-            holder.title.setText("Amount : " + getpayEventListQuery1.getPayRecordAmt());
-            holder.tv_date.setText("Date : " + getpayEventListQuery1.getPayEventDate());
+            holder.title.setText("Pay Received : " + getpayEventListQuery1.getPayRecordAmt()+" pesos");
+            holder.tv_date.setText(date+"  PayAccID : "+getpayEventListQuery1.getPayAccountID());
         }else {
-            holder.title.setText("Code : " + getpayEventListQuery1.getCodeIssued());
-            holder.tv_date.setText("Date : " + getpayEventListQuery1.getPayEventDate());
+            holder.title.setText("Code Iussed : " + getpayEventListQuery1.getCodeIssued());
+            holder.tv_date.setText(date+"  PayAccID : "+getpayEventListQuery1.getPayAccountID());
         }
     }
 
@@ -65,8 +81,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.tv_fname);
-            tv_date = (TextView) itemView.findViewById(R.id.tv_lname);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_fname);
+            title = (TextView) itemView.findViewById(R.id.tv_lname);
 //            title.setText("Pay Event Date");
 
             itemView.setOnClickListener(new View.OnClickListener() {

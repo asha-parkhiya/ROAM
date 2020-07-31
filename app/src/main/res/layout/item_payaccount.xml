@@ -40,7 +40,7 @@
         android:layout_toRightOf="@+id/rl_image"
         android:gravity="center_vertical"
         android:text="hello"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textColor="@color/white"
         android:layout_marginBottom="3sp" />
 

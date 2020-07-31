@@ -24,6 +24,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.sparkle.roam.LocalDatabase.DatabaseHelper;
 import com.sparkle.roam.LoginData;
 import com.sparkle.roam.LoginRoomDatabase;
+import com.sparkle.roam.Model.Destibutor.CountryDetail;
+import com.sparkle.roam.Model.Destibutor.GetdistributorProfileForAgent;
 import com.sparkle.roam.Model.PayEventSync.PayEventData;
 import com.sparkle.roam.Model.SyncData.PayAccountData;
 import com.sparkle.roam.Model.SyncProductData.ProductData;
@@ -217,6 +219,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void callSyncApi(){
+        JSONObject requestJson = new JSONObject();
+        try {
+            requestJson.put("query","{ getdistributorProfileForAgent( AuthToken: \""+token+"\"  ) { distributorID customerName distributorProfileURL distributorAccountNo contactLastName contactFirstName contactEmail phone addressLine1 addressLine2 city state postalCode country_countryID  countryDetail { countryID nameEnglish nameNative countrySymbol flagImage currencyNameEnglish currencySymbol currencyFXCode phoneAreaCode } } }");
+            System.out.println("-------------json-------------"+requestJson.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        webRequest.POST_METHOD(Constants.DISTRIBUTOR_URL,requestJson,null,LoginActivity.this,WebCallType.GET_DISTRIBUTER_PROFILE,false);
         webRequest.GET_METHOD(Constants.SYNC_DATA_URL+"0/10/"+username+"/"+android_id, LoginActivity.this,  WebCallType.GET_PAYACCOUNT_DATA, false, token);
         webRequest.GET_METHOD(Constants.PAYEVENT_SYNC_DATA_URL+"0/10/"+username+"/"+android_id, LoginActivity.this,  WebCallType.GET_PAYEVENT_DATA, false, token);
         webRequest.GET_METHOD(Constants.USER_SYNC_DATA_URL+"0/10/"+username+"/"+android_id, LoginActivity.this,  WebCallType.GET_USER_DATA, false, token);
@@ -269,6 +279,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     break;
 
+                case GET_DISTRIBUTER_PROFILE:
+                    try {
+                        JSONObject json = new JSONObject(String.valueOf(response));
+                        String data = json.getString("data");
+                        JSONObject jsonObject = new JSONObject(data);
+                        System.out.println("--------------------------"+jsonObject.toString());
+                        System.out.println("--------------------------"+jsonObject.getString("getdistributorProfileForAgent"));
+                        JSONArray jsonArray = new JSONArray(jsonObject.getString("getdistributorProfileForAgent"));
+                        for (int i = 0; i < jsonArray.length(); i++){
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            GetdistributorProfileForAgent getdistributor = gson.fromJson(jsonObject1.toString(),GetdistributorProfileForAgent.class);
+                            CountryDetail countryDetail = getdistributor.getCountryDetail();
+                            myDb.insertDistributorData(String.valueOf(getdistributor.getDistributorID()), String.valueOf(getdistributor.getCustomerName()), String.valueOf(getdistributor.getDistributorProfileURL()), String.valueOf(getdistributor.getDistributorAccountNo()), String.valueOf(getdistributor.getContactLastName()), String.valueOf(getdistributor.getContactFirstName()
+                            ), String.valueOf(getdistributor.getContactEmail()), String.valueOf(getdistributor.getPhone()), String.valueOf(getdistributor.getAddressLine1()), String.valueOf(getdistributor.getAddressLine2()), String.valueOf(getdistributor.getCity()), String.valueOf(getdistributor.getState()), String.valueOf(getdistributor.getPostalCode()), String.valueOf(getdistributor.getCountryCountryID()
+                            ), String.valueOf(countryDetail.getCountryID()), String.valueOf(countryDetail.getNameEnglish()), String.valueOf(countryDetail.getNameNative()), String.valueOf(countryDetail.getCountrySymbol()), String.valueOf(countryDetail.getFlagImage()), String.valueOf(countryDetail.getCurrencyNameEnglish()), String.valueOf(countryDetail.getCurrencySymbol()),
+                                    String.valueOf(countryDetail.getCurrencyFXCode()), String.valueOf(countryDetail.getPhoneAreaCode()));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    break;
                 case GET_PAYACCOUNT_DATA:
 
                     try {

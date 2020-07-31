@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.res.TypedArray;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -24,19 +23,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.sparkle.roam.Activity.HomeActivity;
-import com.sparkle.roam.Activity.LoginActivity;
 import com.sparkle.roam.Adapter.NewAdapter;
 import com.sparkle.roam.ContentProvider.ToDo;
 import com.sparkle.roam.ContentProvider.ToDoListDBAdapter;
@@ -264,9 +257,16 @@ public class PayEventHistoryFragment extends Fragment implements View.OnClickLis
         PayEventData payEventData =  payEventDataList.get(position);
 
         if (payEventDataList.get(position).getEventType().equals("payCollect")){
-
+            showDialogAmount(String.valueOf(payEventData.getPayDays()),
+                    String.valueOf(payEventData.getPayRecordAmt()),
+                    payEventData.getPayRecordNotes(),
+                    payEventData.getEventType().toString(),
+                    String.valueOf(payEventData.getCodeIssued()),
+                    String.valueOf(payEventData.getCodeDays()),
+                    String.valueOf(payEventData.getCodehashTop()),
+                    String.valueOf(payEventData.getPayAccountID()),PPID,firmwareVersion,codesize);
         }else {
-            showCustomDialog(String.valueOf(payEventData.getPayDays()),
+            showDialogCodeIssue(String.valueOf(payEventData.getPayDays()),
                     String.valueOf(payEventData.getPayRecordAmt()),
                     payEventData.getPayRecordNotes(),
                     payEventData.getEventType().toString(),
@@ -276,22 +276,12 @@ public class PayEventHistoryFragment extends Fragment implements View.OnClickLis
                     String.valueOf(payEventData.getPayAccountID()),PPID,firmwareVersion,codesize);
         }
 
-
-//        ((HomeActivity)getActivity()).setPayEventHistoryDetailFragment(
-//                String.valueOf(payEventData.getPayDays()),
-//                String.valueOf(payEventData.getPayRecordAmt()),
-//                payEventData.getPayRecordNotes(),
-//                payEventData.getEventType().toString(),
-//                String.valueOf(payEventData.getCodeIssued()),
-//                String.valueOf(payEventData.getCodeDays()),
-//                String.valueOf(payEventData.getCodehashTop()),
-//                String.valueOf(payEventData.getPayAccountID()),PPID,firmwareVersion,codesize);
     }
 
-    private void showCustomDialog(String paydays, String payRecordAmt, String payRecordNotes, String eventtype, String codeIssued, String codedays, String codehashtop, String payAccID,String productItemOESN,String firmwareVersion, int codesize) {
+    private void showDialogAmount(String paydays, String payRecordAmt, String payRecordNotes, String eventtype, String codeIssued, String codedays, String codehashtop, String payAccID,String productItemOESN,String firmwareVersion, int codesize) {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
-        dialog.setContentView(R.layout.dialog_dark);
+        dialog.setContentView(R.layout.dialog_dark_amount);
         dialog.setCancelable(true);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -299,12 +289,69 @@ public class PayEventHistoryFragment extends Fragment implements View.OnClickLis
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-//        if (codesize == 0){
-//            ((Button) dialog.findViewById(R.id.btn_issuecode)).setEnabled(false);
-//            Drawable unwrappedDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.btn_back_disable);
-//            ((Button) dialog.findViewById(R.id.btn_issuecode)).setBackground(unwrappedDrawable);
-//            ((Button) dialog.findViewById(R.id.btn_issuecode)).setTextColor(getResources().getColor(R.color.gray));
-//        }
+
+        if (firmwareVersion != null){
+            try {
+                JSONObject obj = new JSONObject(firmwareVersion);
+                String device_type = obj.getString("firmware");
+
+                System.out.println("--------firmwareVersion---------"+firmwareVersion);
+                System.out.println("--------device_type---------"+device_type);
+                if (device_type.startsWith("ovCamp")){
+                    myPref.setPref(Constants.DEVICE_TYPE,Constants.OVCAMP_DEVICE);
+                }else {
+                    myPref.setPref(Constants.DEVICE_TYPE,Constants.LUMN_DEVICE);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        toDoListDBAdapter = ToDoListDBAdapter.getToDoListDBAdapterInstance(getContext());
+        toDos=toDoListDBAdapter.getAllToDos();
+
+        newAdapter = new NewAdapter(toDos,getContext(),this::changevalue);
+        System.out.println("------toDos-------"+toDos.size());
+
+        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        Calendar c = Calendar.getInstance();
+        String formattedDate = input.format(c.getTime());
+
+        ((TextView) dialog.findViewById(R.id.tv_payrecordamt)).setText(payRecordAmt);
+        ((TextView) dialog.findViewById(R.id.tv_payrecordnote)).setText(payRecordNotes);
+        ((TextView) dialog.findViewById(R.id.tv_eventtype)).setText(eventtype);
+
+        ((ImageButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        ((Button) dialog.findViewById(R.id.btn_print)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Comming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+
+
+    private void showDialogCodeIssue(String paydays, String payRecordAmt, String payRecordNotes, String eventtype, String codeIssued, String codedays, String codehashtop, String payAccID,String productItemOESN,String firmwareVersion, int codesize) {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.dialog_dark_reissue_code);
+        dialog.setCancelable(true);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
 
         if (firmwareVersion != null){
             try {
@@ -345,6 +392,13 @@ public class PayEventHistoryFragment extends Fragment implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+            }
+        });
+
+        ((Button) dialog.findViewById(R.id.btn_print)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Comming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
 

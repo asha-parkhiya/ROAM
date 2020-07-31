@@ -14,4 +14,5 @@ public enum WebCallType {
     GET_ACCESS_TOKEN,
     LOGOUT_DATA,
     GET_REQUEST_CODE,
+    GET_DISTRIBUTER_PROFILE,
     GET_CODE_ARRAY;}

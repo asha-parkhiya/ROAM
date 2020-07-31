@@ -187,7 +187,7 @@ public class PayAccountFragment extends Fragment implements View.OnClickListener
                         Toast.makeText(getContext(), "MQTT connected", Toast.LENGTH_SHORT).show();
                     }else {
                         mqtt_status.setImageResource(R.drawable.gray1);
-                        Toast.makeText(getContext(), "MQTT not connected", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "MQTT not connected", Toast.LENGTH_SHORT).show();
                     }
                     System.out.println("------connection---------"+mService.isConnected());
 

@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String PRODUCTITEM_TABLE_NAME = "productItem";
     private static final String LAST_SYNC_TABLE_NAME = "lastSyncDate";
     private static final String BATCH_CODE_TABLE_NAME = "batchCodeGenerate";
+    private static final String DISRTIBUTOR_TABLE_NAME = "distributorTable";
 
     private static final String BATCH_CODE_COL_1 = "ID";
     private static final String BATCH_CODE_COL_2 = "userID";
@@ -81,6 +82,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String PRODUCT_COL_7 = "firmwareVersion";
     private static final String PRODUCT_COL_8 = "assignedItemsID";
 
+    private static final String DISRTIBUTOR_COL_1 = "distributorID";
+    private static final String DISRTIBUTOR_COL_2 = "customerName";
+    private static final String DISRTIBUTOR_COL_3 = "distributorProfileURL";
+    private static final String DISRTIBUTOR_COL_4 = "distributorAccountNo";
+    private static final String DISRTIBUTOR_COL_5 = "contactLastName";
+    private static final String DISRTIBUTOR_COL_6 = "contactFirstName";
+    private static final String DISRTIBUTOR_COL_7 = "contactEmail";
+    private static final String DISRTIBUTOR_COL_8 = "phone";
+    private static final String DISRTIBUTOR_COL_9 = "addressLine1";
+    private static final String DISRTIBUTOR_COL_10 ="addressLine2";
+    private static final String DISRTIBUTOR_COL_11 ="city";
+    private static final String DISRTIBUTOR_COL_12 ="state";
+    private static final String DISRTIBUTOR_COL_13 ="postalCode";
+    private static final String DISRTIBUTOR_COL_14 ="country_countryID";
+    private static final String DISRTIBUTOR_COL_15 ="countryID";
+    private static final String DISRTIBUTOR_COL_16 ="nameEnglish";
+    private static final String DISRTIBUTOR_COL_17 ="nameNative";
+    private static final String DISRTIBUTOR_COL_18 ="countrySymbol";
+    private static final String DISRTIBUTOR_COL_19 ="flagImage";
+    private static final String DISRTIBUTOR_COL_20 ="currencyNameEnglish";
+    private static final String DISRTIBUTOR_COL_21 ="currencySymbol";
+    private static final String DISRTIBUTOR_COL_22 ="currencyFXCode";
+    private static final String DISRTIBUTOR_COL_23 ="phoneAreaCode";
+
+
+
+
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,6 +137,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(" CREATE TABLE IF NOT EXISTS " + BATCH_CODE_TABLE_NAME + "( ID  INTEGER PRIMARY KEY AUTOINCREMENT, userID TEXT, days TEXT)");
 
+        db.execSQL(" CREATE TABLE IF NOT EXISTS " + DISRTIBUTOR_TABLE_NAME + "( distributorID  VARCHAR, customerName VARCHAR, distributorProfileURL VARCHAR, distributorAccountNo VARCHAR," +
+                " contactLastName VARCHAR, contactFirstName VARCHAR, contactEmail VARCHAR, phone VARCHAR, addressLine1 VARCHAR, addressLine2 VARCHAR, city VARCHAR, " +
+                "state VARCHAR, postalCode VARCHAR, country_countryID VARCHAR, countryID VARCHAR, nameEnglish VARCHAR, nameNative VARCHAR, countrySymbol VARCHAR, flagImage VARCHAR, " +
+                "currencyNameEnglish VARCHAR, currencySymbol VARCHAR, currencyFXCode VARCHAR, phoneAreaCode VARCHAR)");
+
 
     }
 
@@ -119,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(" DROP TABLE IF EXISTS " +PRODUCTITEM_TABLE_NAME);
         db.execSQL(" DROP TABLE IF EXISTS " +LAST_SYNC_TABLE_NAME);
         db.execSQL(" DROP TABLE IF EXISTS " +BATCH_CODE_TABLE_NAME);
+        db.execSQL(" DROP TABLE IF EXISTS " +DISRTIBUTOR_TABLE_NAME);
         onCreate(db);
     }
     public boolean insertPayAccountData(String payAccountID, String startDate,String depositDays, String payoffAmt, String minPayDays, String maxPayDays, String schPayDays, String userID, String distributorID,
@@ -145,6 +180,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_17 , creditDaysIssued);
         contentValues.put(COL_18 , payDaysReceived);
         long result = db.insert(PAYACCOUNT_TABLE_NAME,null,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public boolean insertDistributorData(String distributorID, String customerName, String distributorProfileURL , String distributorAccountNo , String
+            contactLastName , String contactFirstName , String contactEmail , String phone , String addressLine1 , String addressLine2 , String city , String
+            state , String postalCode , String country_countryID , String countryID , String nameEnglish , String nameNative , String countrySymbol , String flagImage , String
+            currencyNameEnglish , String currencySymbol , String currencyFXCode , String phoneAreaCode ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DISRTIBUTOR_COL_1 ,distributorID);
+        contentValues.put(DISRTIBUTOR_COL_2 ,customerName);
+        contentValues.put(DISRTIBUTOR_COL_3 ,distributorProfileURL);
+        contentValues.put(DISRTIBUTOR_COL_4 ,distributorAccountNo);
+        contentValues.put(DISRTIBUTOR_COL_5 ,contactLastName);
+        contentValues.put(DISRTIBUTOR_COL_6 ,contactFirstName);
+        contentValues.put(DISRTIBUTOR_COL_7 ,contactEmail);
+        contentValues.put(DISRTIBUTOR_COL_8 ,phone);
+        contentValues.put(DISRTIBUTOR_COL_9 ,addressLine1);
+        contentValues.put(DISRTIBUTOR_COL_10,addressLine2);
+        contentValues.put(DISRTIBUTOR_COL_11,city);
+        contentValues.put(DISRTIBUTOR_COL_12,state);
+        contentValues.put(DISRTIBUTOR_COL_13,postalCode);
+        contentValues.put(DISRTIBUTOR_COL_14,country_countryID);
+        contentValues.put(DISRTIBUTOR_COL_15,countryID);
+        contentValues.put(DISRTIBUTOR_COL_16,nameEnglish);
+        contentValues.put(DISRTIBUTOR_COL_17,nameNative);
+        contentValues.put(DISRTIBUTOR_COL_18,countrySymbol);
+        contentValues.put(DISRTIBUTOR_COL_19,flagImage);
+        contentValues.put(DISRTIBUTOR_COL_20,currencyNameEnglish);
+        contentValues.put(DISRTIBUTOR_COL_21,currencySymbol);
+        contentValues.put(DISRTIBUTOR_COL_22,currencyFXCode);
+        contentValues.put(DISRTIBUTOR_COL_23,phoneAreaCode);
+        long result = db.insert(DISRTIBUTOR_TABLE_NAME,null,contentValues);
         if(result == -1)
             return false;
         else
@@ -289,6 +360,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getDistributorData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery(" select * from " + DISRTIBUTOR_TABLE_NAME ,  null);
+        return res;
+    }
+
     public Cursor getPayAccountData(String s){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery(" select * from " + PAYACCOUNT_TABLE_NAME + " LEFT JOIN " + USER_TABLE_NAME + " ON "+PAYACCOUNT_TABLE_NAME+".userID = "+USER_TABLE_NAME+".userID " +
@@ -375,6 +452,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(" DROP TABLE IF EXISTS " +PRODUCTITEM_TABLE_NAME);
         db.execSQL(" DROP TABLE IF EXISTS " +LAST_SYNC_TABLE_NAME);
         db.execSQL(" DROP TABLE IF EXISTS " +BATCH_CODE_TABLE_NAME);
+        db.execSQL(" DROP TABLE IF EXISTS " +DISRTIBUTOR_TABLE_NAME);
     }
 //    public Integer deleteData (String id){
 //        SQLiteDatabase db = this.getWritableDatabase();

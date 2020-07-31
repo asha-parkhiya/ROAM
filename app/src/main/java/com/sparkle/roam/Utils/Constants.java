@@ -213,6 +213,7 @@ public class Constants {
     public static final String PRODUCT_SYNC_DATA_URL = "http://18.141.237.200:4004/syncProductData/";
     public static final String REFRESH_TOKEN_URL = "https://sdnp00uo7h.execute-api.ap-southeast-1.amazonaws.com/dev/graphql";
     public static final String LOGOUT_URL = "http://18.141.237.200:4004/mobileLogout";
+    public static final String DISTRIBUTOR_URL = "https://sdnp00uo7h.execute-api.ap-southeast-1.amazonaws.com/dev/graphql";
 
 
     public static final String REQUEST_CODE_URL = "http://18.185.55.244:4004/generateCode";

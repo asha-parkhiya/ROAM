@@ -76,6 +76,22 @@
             android:textSize="14sp"
             android:backgroundTint="@color/dim_gray"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/et_amount"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="18sp"
+            android:id="@+id/currencySymbol"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:id="@+id/imageView"
+            android:layout_marginTop="14sp"
+            android:layout_alignParentEnd="true"/>
+
         <EditText
             android:layout_below="@+id/et_amount"
             android:textColor="@color/white"
