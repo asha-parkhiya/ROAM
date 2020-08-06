@@ -582,7 +582,7 @@ public class GenerateCodeDialog extends DialogFragment implements View.OnClickLi
             str = str + 1;
         }
 //        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
         Calendar c = Calendar.getInstance();
         String formattedDate = input.format(c.getTime());
 

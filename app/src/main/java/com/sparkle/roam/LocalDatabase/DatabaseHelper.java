@@ -381,6 +381,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor orderbyPayAccId(String s){
+        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.query(PAYACCOUNT_TABLE_NAME, new String[]{COL_1,COL_2,COL_3,COL_4,COL_5,COL_6,COL_7,COL_8,COL_9,COL_10,COL_11,COL_12,COL_13,COL_14,COL_15,COL_16,COL_17,COL_18}, null, null, null, null, COL_1+" ASC");
+        Cursor cursor1 = db.rawQuery(" select * from " + PAYACCOUNT_TABLE_NAME + " LEFT JOIN " + USER_TABLE_NAME + " ON "+PAYACCOUNT_TABLE_NAME+".userID = "+USER_TABLE_NAME+".userID " +
+                        "LEFT JOIN "+PRODUCTITEM_TABLE_NAME+" ON "+PAYACCOUNT_TABLE_NAME+".assignedItemsID = "+PRODUCTITEM_TABLE_NAME+".assignedItemsID" +
+                        " WHERE "+USER_TABLE_NAME+".firstName LIKE '%"+s+"%' OR "+USER_TABLE_NAME+".lastName LIKE '%"+s+"%'"+
+                        " ORDER BY "+COL_1 + " ASC"
+                , new String[] {});
+        return cursor1;
+    }
+
+    public Cursor orderbyDueDate(String s){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor1 = db.rawQuery(" select * from " + PAYACCOUNT_TABLE_NAME + " LEFT JOIN " + USER_TABLE_NAME + " ON "+PAYACCOUNT_TABLE_NAME+".userID = "+USER_TABLE_NAME+".userID " +
+                        "LEFT JOIN "+PRODUCTITEM_TABLE_NAME+" ON "+PAYACCOUNT_TABLE_NAME+".assignedItemsID = "+PRODUCTITEM_TABLE_NAME+".assignedItemsID" +
+                        " WHERE "+USER_TABLE_NAME+".firstName LIKE '%"+s+"%' OR "+USER_TABLE_NAME+".lastName LIKE '%"+s+"%'"+
+                        " ORDER BY "+COL_2 + " ASC"//DESC
+                , new String[] {});
+        return cursor1;
+    }
+
+    public Cursor orderbyname(String s){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor1 = db.rawQuery(" select * from " + PAYACCOUNT_TABLE_NAME + " LEFT JOIN " + USER_TABLE_NAME + " ON "+PAYACCOUNT_TABLE_NAME+".userID = "+USER_TABLE_NAME+".userID " + "LEFT JOIN "+PRODUCTITEM_TABLE_NAME+" ON "+PAYACCOUNT_TABLE_NAME+".assignedItemsID = "+PRODUCTITEM_TABLE_NAME+".assignedItemsID" + " WHERE "+USER_TABLE_NAME+".firstName LIKE '%"+s+"%' OR "+USER_TABLE_NAME+".lastName LIKE '%"+s+"%'"+ " ORDER BY "+USER_COL_6 + " ASC"//DESC
+                , new String[] {});
+        return cursor1;
+    }
+
+
     public Cursor checkAssignmentType(String s){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "select count(*) as total from "+PAYACCOUNT_TABLE_NAME+" WHERE userID = ? AND agentAssignmentStatus = 'limited by days'";

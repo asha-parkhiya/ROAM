@@ -218,7 +218,22 @@ public class PayAccountFragment extends Fragment implements View.OnClickListener
 
     public void UpdateUI(String s) {
         displayPayAccounts = new ArrayList<>();
-        Cursor res = mdbhelper.getPayAccountData(s);
+        newPayAccountAdapter = new PayAccountAdapter(getContext(),displayPayAccounts,this::onbclick);
+        rv_list.setAdapter(newPayAccountAdapter);
+        Cursor res;
+        if (myPref.getPref(Constants.SPINER_SELECTION,"").equals(Constants.SPINER_AccID)){
+            res = mdbhelper.orderbyPayAccId(s);
+            System.out.println("---------accountID");
+        }else if (myPref.getPref(Constants.SPINER_SELECTION,"").equals(Constants.SPINER_DueDate)){
+            res = mdbhelper.orderbyDueDate(s);
+            System.out.println("---------duedate");
+        }else if (myPref.getPref(Constants.SPINER_SELECTION,"").equals(Constants.SPINER_Name)){
+            res = mdbhelper.orderbyname(s);
+            System.out.println("---------name");
+        }else {
+            res = mdbhelper.getPayAccountData(s);
+            System.out.println("---------no sorting");
+        }
         while (res.moveToNext()){
             String firstname = res.getString(res.getColumnIndex("firstName"));
             String lastname = res.getString(res.getColumnIndex("lastName"));
@@ -249,6 +264,7 @@ public class PayAccountFragment extends Fragment implements View.OnClickListener
         }//search time error generate
         newPayAccountAdapter.notifyList(displayPayAccounts);
         ((HomeActivity) getActivity()).updateButtonAdd(true);
+
     }
 
     @Override
@@ -391,6 +407,7 @@ public class PayAccountFragment extends Fragment implements View.OnClickListener
         System.out.println("------event str--------"+event);
         if (event.equals("Dialog Dismiss")){
             UpdateUI("");
+
         }
         /* Do something */
     }
@@ -398,6 +415,7 @@ public class PayAccountFragment extends Fragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
+        UpdateUI("");
         System.out.println("---------pay acc frag-------------resume");
     }
 

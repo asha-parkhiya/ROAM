@@ -123,6 +123,11 @@ public class Constants {
     public static final String AGENTASSIGNMENT = "AGENTASSIGNMENT";
     public static final String OFFSET = "offset";
     public static final String POSITION = "positionfordata";
+    public static final String SPINER_POSITION = "SPINER_POSITION";
+    public static final String SPINER_SELECTION = "SPINER_SELECTION";
+    public static final String SPINER_Name = "SPINER_Name";
+    public static final String SPINER_AccID = "SPINER_AccID";
+    public static final String SPINER_DueDate = "SPINER_DueDate";
     public static final String INTERFACE = "INTERFACE";
     public static final String USERNAME = "USERNAME";
     public static final String REFRESH_TOKEN = "REFRESH_TOKEN";

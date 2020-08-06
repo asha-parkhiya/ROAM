@@ -30,6 +30,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,8 +102,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AWSAppSyncClient mAWSAppSyncClient;
     StringBuilder stringBuilder;
     DrawerLayout drawer;
-    TextView tv_synctiime, tv_logout,tv_sync, tv_syncStatus;
-    ImageView im_logo1;
+    TextView tv_synctiime, tv_logout,tv_sync, tv_syncStatus,tv_setting;
+    RelativeLayout rl_setting;
+    ImageView im_logo1,im_setting;
     ActionBarDrawerToggle toggle;
     ImageView btn_add;
     String token = null;
@@ -282,10 +284,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         tv_sync = navigationView.getHeaderView(0).findViewById(R.id.tv_sync);
         im_logo1 = navigationView.getHeaderView(0).findViewById(R.id.im_logo1);
         tv_sync.setOnClickListener(this);
+
         tv_syncStatus = navigationView.getHeaderView(0).findViewById(R.id.tv_syncStatus);
         tv_syncStatus.setOnClickListener(this);
+
+        rl_setting = navigationView.getHeaderView(0).findViewById(R.id.rl_setting);
+        rl_setting.setOnClickListener(this);
+
         tv_logout = navigationView.getHeaderView(0).findViewById(R.id.tv_logout);
         tv_logout.setOnClickListener(this);
+
         setNewPayAccountFragment(this::onNavigationClick);
         boolean iscoonected = isNetworkConnected();
         if (iscoonected) {
@@ -328,6 +336,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+
+        rl_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public void onClick(View view) {
@@ -359,24 +375,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             if (iscoonected) {
                 startanimation();
                 tv_sync.setText("Syncing...");
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Date date = new Date();
-//                        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-//                        date = calendar.getTime();
-//                        String data = new SimpleDateFormat("E dd MMM yyyy HH:mm:ss z").format(date);
-//                        String maketime = "(Last Sync:" + data + ")";
-//                        myPref.setPref(Constants.DB_LAST_SYNC, maketime);
-//                        setSyncTime(maketime);
-//                    }
-//                },4000);
-
-//                tv_syncStatus.setText("Wait until data send to server.");
             }
-//            else{
-//                tv_syncStatus.setText("Sync to OVES Hub when data link is available.");
-//            }
         }
     }
 

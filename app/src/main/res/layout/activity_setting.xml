@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SettingActivity"
+    android:background="@color/black">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tool_bar"
+        android:background="@color/colorPrimary">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:textStyle="bold"
+        android:fontFamily="@font/lato_light"
+        android:id="@+id/text"
+        android:layout_marginLeft="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginTop="32sp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="Sort By : "/>
+
+    <RelativeLayout
+        android:layout_alignParentEnd="true"
+        android:layout_width="125sp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8sp"
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginTop="28sp"
+        android:background="@drawable/dropdown_backgroundcolor"
+        android:layout_marginRight="8sp">
+
+        <Spinner
+            android:background="@drawable/bg_black_br_white"
+            android:layout_width="125sp"
+            android:layout_height="30sp"
+            android:spinnerMode="dropdown"
+            android:id="@+id/spinner"
+            ></Spinner>
+    </RelativeLayout>
+
+</RelativeLayout>
